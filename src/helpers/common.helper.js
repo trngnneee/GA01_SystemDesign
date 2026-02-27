@@ -1,4 +1,13 @@
-function format_number(price) { return new Intl.NumberFormat('en-US').format(price); }
+/**
+ * Tạo URL đầy đủ tới trang chi tiết sản phẩm.
+ */
+export function buildProductUrl(req, productId) {
+  return `${req.protocol}://${req.get("host")}/products/detail?id=${productId}`;
+}
+
+function format_number(price) {
+  return new Intl.NumberFormat("en-US").format(price);
+}
 
 function range(start, end) {
   const result = [];

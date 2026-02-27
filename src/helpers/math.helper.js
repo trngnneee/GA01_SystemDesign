@@ -16,7 +16,7 @@ function round(value, decimals) {
 
 const currencyFormatter = new Intl.NumberFormat("en-US");
 
-function format_number(value) {
+export function format_number(value) {
   return currencyFormatter.format(value);
 }
 
