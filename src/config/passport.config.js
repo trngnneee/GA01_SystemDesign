@@ -1,4 +1,4 @@
-import passport from './utils/passport.js';
+import passport from "../utils/passport.js";
 
 function passportConfig(app) {
   // Initialize Passport
