@@ -11,7 +11,8 @@ function multiply(a, b) {
 }
 
 function round(value, decimals) {
-  return Math.round(value * Math.pow(10, decimals)) / Math.pow(10, decimals);
+  const factor = Math.pow(10, decimals); // KISS-4: tính một lần, dùng lại
+  return Math.round(value * factor) / factor;
 }
 
 const currencyFormatter = new Intl.NumberFormat("en-US");

@@ -1,51 +1,32 @@
+// KISS-5: local pad helper loại bỏ boilerplate String().padStart() lặp lại
+const pad = (n) => String(n).padStart(2, "0");
+
 function format_date(date) {
-  if (!date) return '';
+  if (!date) return "";
   const d = new Date(date);
-  if (isNaN(d.getTime())) return '';
-
-  const year = d.getFullYear();
-  const month = String(d.getMonth() + 1).padStart(2, '0');
-  const day = String(d.getDate()).padStart(2, '0');
-
-  const hour = String(d.getHours()).padStart(2, '0');
-  const minute = String(d.getMinutes()).padStart(2, '0');
-  const second = String(d.getSeconds()).padStart(2, '0');
-
-  return `${hour}:${minute}:${second} ${day}/${month}/${year}`;
+  if (isNaN(d.getTime())) return "";
+  return `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())} ${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()}`;
 }
 
 function format_date_input(date) {
-  if (!date) return '';
+  if (!date) return "";
   const d = new Date(date);
-  if (isNaN(d.getTime())) return '';
-  const year = d.getFullYear();
-  const month = String(d.getMonth() + 1).padStart(2, '0');
-  const day = String(d.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
+  if (isNaN(d.getTime())) return "";
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 }
 
 function format_only_date(date) {
-  if (!date) return '';
+  if (!date) return "";
   const d = new Date(date);
-  if (isNaN(d.getTime())) return '';
-
-  const year = d.getFullYear();
-  const month = String(d.getMonth() + 1).padStart(2, '0');
-  const day = String(d.getDate()).padStart(2, '0');
-
-  return `${day}/${month}/${year}`;
+  if (isNaN(d.getTime())) return "";
+  return `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()}`;
 }
 
 function format_only_time(time) {
-  if (!time) return '';
+  if (!time) return "";
   const d = new Date(time);
-  if (isNaN(d.getTime())) return '';
-
-  const hour = String(d.getHours()).padStart(2, '0');
-  const minute = String(d.getMinutes()).padStart(2, '0');
-  const second = String(d.getSeconds()).padStart(2, '0');
-
-  return `${hour}:${minute}:${second}`;
+  if (isNaN(d.getTime())) return "";
+  return `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
 }
 
 export default {
@@ -53,4 +34,4 @@ export default {
   format_date_input,
   format_only_date,
   format_only_time,
-}
+};
