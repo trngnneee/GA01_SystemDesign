@@ -368,29 +368,6 @@ export function findTopBids() {
     .limit(5);
 }
 
-export function findByProductId(productId) {
-  return db('products')
-    .leftJoin('users as highest_bidder', 'products.highest_bidder_id', 'highest_bidder.id')
-    .leftJoin('product_images', 'products.id', 'product_images.product_id')
-    .leftJoin('users as seller', 'products.seller_id', 'seller.id')
-    .leftJoin('categories', 'products.category_id', 'categories.id')
-    .where('products.id', productId)
-    .select(
-      'products.*',
-      'product_images.img_link',
-      'seller.fullname as seller_name',
-      'seller.created_at as seller_created_at',
-      'categories.name as category_name',
-      db.raw(`mask_name_alternating(highest_bidder.fullname) AS bidder_name`),
-      db.raw(`
-        (
-          SELECT COUNT(*) 
-          FROM bidding_history 
-          WHERE bidding_history.product_id = products.id
-        ) AS bid_count
-      `)
-    )
-}
 
 export function findRelatedProducts(productId) {
     return db('products')
